@@ -1,0 +1,66 @@
+:root {
+    --cor-fundo: #e4e4e4;
+    --cor-fundo-transp: rgba(0, 0, 0, 0.2);
+}
+
+body, html { scroll-behavior: smooth; }
+
+.text-indigo { color: var(--bs-indigo) !important }
+.bg-indigo { background-color: var(--bs-indigo) }
+
+.text-light-dark { color: var(--bs-gray-500) }
+.bg-light-dark { background-color: var(--bs-gray-500) }
+
+.text-dark-secondary { color: #2b3138 }
+.bg-dark-secondary { background-color: #2b3138 }
+
+.text-teal { color: var(--bs-teal) }
+.bg-teal { background-color: var(--bs-teal) }
+
+.bg-purple {background-color: #660FF1;}
+.text-purple {color: #660FF1}
+.border-purple{border: #660FF1;}
+
+.border-warning{ border: rgba( var(--bs-warning-rgb));}
+
+.bg-primary-semi    { background-color: rgba( var(--bs-primary-rgb),    0.15 );}
+.bg-secondary-semi  { background-color: rgba( var(--bs-secondary-rgb),  0.2 );}
+.bg-success-semi    { background-color: rgba( var(--bs-success-rgb),    0.15);}
+.bg-teal-semi       { background-color: rgba( 32, 201, 151,           0.2 );}
+.bg-info-semi       { background-color: rgba( var(--bs-info-rgb),       0.2 );}
+.bg-warning-semi    { background-color: rgba( var(--bs-warning-rgb),    0.18);}
+.bg-danger-semi     { background-color: rgba( var(--bs-danger-rgb),     0.18 );}
+.bg-dark-secondary-semi { background-color: rgba( var(--bs-dark-rgb),    0.65);}
+
+
+
+.icon-center{
+    text-align: center;
+}
+.text-a-left{
+    text-align: left;
+}
+.text-a-right{
+    text-align: right;
+}
+.resize-icon{
+    font-size: 50pt;
+}
+.margin-top-5{
+    margin-top: 5%;
+}
+.margin-top-bottom-10{
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+.margin-bottom-10{
+    margin-bottom: 10%;
+}
+.margin-top-bottom-15{
+    margin-top: 15%;
+    margin-bottom: 5%;
+}
+.margin-10{
+    margin-left: 5%;
+    margin-right: 5%;
+}
