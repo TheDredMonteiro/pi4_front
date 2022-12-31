@@ -12,6 +12,10 @@ body {
 .box-form {
     font-size: 26px;
 }
+.logo {
+    height: 70px;
+    width: 246px;
+}
 
 .logo-area {
     margin-bottom: 2%;
@@ -22,7 +26,11 @@ body {
 }
 
 .section-login {
-    padding: 10% 0;
+    padding: 5% 0;
+}
+
+.text-login {
+    font-size: 32px;
 }
 
 .label-email {
@@ -30,7 +38,7 @@ body {
 }
 
 
-.input-email{
+.input-email, .input-otp{
     gap: 10px;
     width: 100%;
     height: 56px;
@@ -53,6 +61,16 @@ body {
     color: #ECB357;
     border-radius: 100px;
     cursor: pointer;
+}
+
+.text-email-destino, .label-email{
+    font-size: 16px;
+    color: #616D38;
+}
+
+.input-otp::placeholder{
+    text-align: center;
+    color: #D3D4A9;
 }
 
 .paragraph1{

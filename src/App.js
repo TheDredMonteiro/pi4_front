@@ -8,6 +8,7 @@ import PrivateRoute from './view/backoffice/private_route'
 import NavDeLadob from './view/backoffice/navdeladobackend'
 import FrontPage from './view/landingpage/frontpage'
 import LandingPage from './view/landingpage/landingpage'
+import Login from './view/login/Login';
 /*import BoLogin from './view/backoffice/login'
 import BoRegistar from './view/backoffice/registar'
 import BoRegistar2 from './view/backoffice/registar2'
@@ -85,6 +86,14 @@ export default function App() {
 					</>
 				} />
 
+				<Route exact path='/login' element={
+					<>
+
+						<Login />
+
+					</>
+				} />
+
 				{/*
 				<Route path='/back-office/frontLivros/:mail/:pass' element={
 
@@ -117,10 +126,7 @@ export default function App() {
 
 				} />
 
-
-				<Route path='/back-office/login' element={
-					<BoLogin setLogin={setLogin} />
-				} />
+				
 				<Route path='/back-office/registar' element={
 					<BoRegistar />
 				} />
