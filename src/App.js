@@ -5,6 +5,7 @@ import './styles/index.css'
 
 
 import PrivateRoute from './view/backoffice/private_route'
+import Utilizadores from './view/backoffice/utilizadores'
 import NavDeLadob from './view/backoffice/navdeladobackend'
 import FrontPage from './view/landingpage/frontpage'
 import LandingPage from './view/landingpage/landingpage'
@@ -48,7 +49,7 @@ export default function App() {
 			<PrivateRoute auth={login}>
 				<div className='container-fluid'>
 					<div className='row vh-100'>
-						<NavDeLadob setLogin={setLogin} />
+						<NavDeLadob/>
 						{props.pagina}
 						<UsersModalComponent />
 						<CriarUserModalComponent />
@@ -81,7 +82,7 @@ export default function App() {
 				<Route exact path='/' element={
 					<>
 
-						<LandingPage />
+						<Login />
 
 					</>
 				} />
@@ -93,7 +94,16 @@ export default function App() {
 
 					</>
 				} />
+				<Route exact path='/landingpage' element={
+					<>
 
+						<LandingPage />
+
+					</>
+				} />
+				<Route path='/backend/utilizadores' element={
+					<BackOffice pagina={<Utilizadores />} />
+				} />
 				{/*
 				<Route path='/back-office/frontLivros/:mail/:pass' element={
 

@@ -2,9 +2,9 @@ import axios from 'axios'
 import ip from '../ip'
 
 class AuthService {
-    login(email, password) {
+    login1(email) {
         return axios
-            .post(ip + '/user/login', { email, password })
+            .post(ip + '/user/login1', { email})
             .then(res => {
                 if (res.data.token) {
                     localStorage.setItem('user', JSON.stringify(res.data))
