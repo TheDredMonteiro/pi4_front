@@ -43,7 +43,7 @@ const Login = () => {
                         if (res.data.token) {
                             localStorage.setItem('user', JSON.stringify(res.data))
                             alert("sucesso login1");
-                            navigate('/landingpage');
+                            navigate('/backend/utilizadores');
                         }
                         else {
                             alert("erro login1");

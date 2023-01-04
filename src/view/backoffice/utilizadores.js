@@ -108,21 +108,19 @@ export default function UtilizadoresComponent() {
                             <span className='fs-5 fw-semibold position-relative'>
                                 {utilizador.nome}
                             </span>
-                            
+                            <br></br>
+                            <span className='fs-7 fw-semibold  position-relative'>
+                               Nif: {utilizador.nif}
+                            </span>
                             
                         </td>
                         <td className='text-start text-dark lh-sm'>
-                            <span className='fs-5 fw-semibold  position-relative'>
+                            <span className='fs-6 fw-semibold  position-relative'>
                                 {utilizador.email}
                             </span>
                         </td>
                         
-                        <td className='text-start text-dark lh-sm'>
-                            <span className='fs-5 fw-semibold  position-relative'>
-                                {utilizador.nif}
-                            </span>
-                        </td>
-                        <td className='text-start text-dark lh-sm'>
+                        <td className='text-center text-dark lh-sm'>
                             <span className='fs-5 fw-semibold  position-relative'>
                                 {utilizador.id_role}
                             </span>
@@ -152,7 +150,7 @@ export default function UtilizadoresComponent() {
                             
                         </td>
                         <td className='text-start text-dark lh-sm'>
-                            <span className='fs-5 fw-semibold  position-relative'>
+                            <span className='fs-6 fw-semibold  position-relative'>
                                 {utilizador.data_nascimento}
                             </span>
                         </td>
@@ -207,14 +205,12 @@ export default function UtilizadoresComponent() {
                     <table className='table'>
                         <thead>
                             <tr className=''>
-                                <th className='text-start' style={{ width: '10%' }}>Nome</th>
+                                <th className='text-start' style={{ width: '15%' }}>Nome</th>
                                 <th className='text-start' style={{ width: '10%' }}>Email</th>
-                                <th className='text-start' style={{ width: '10%' }}>NIF</th>
                                 <th className='text-center' style={{ width: '10%' }}>Role</th>
                                 <th className='text-center' style={{ width: '10%' }}>Estado</th>
-                                <th className='text-center' style={{ width: '10%' }}>Data de Nascimento</th>
+                                <th className='text-center' style={{ width: '5%' }}>Data de Nascimento</th>
                                 <th className='text-center' style={{ width: '10%' }}>Fotografia</th>
-                                <th className='text-center' style={{ width: '30%' }} colSpan={1}></th>
                             </tr>
                         </thead>
                         <tbody>
