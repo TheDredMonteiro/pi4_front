@@ -102,14 +102,14 @@ export default function UtilizadoresComponent() {
         return (
             utilizadores.map(utilizador => {
                 return (
-                    <tr className='align-middle' key={utilizador.id} id={utilizador.id}  data-estado={utilizador.estado} data-email={utilizador.email}>
+                    <tr className='align-middle' key={utilizador.id} id={utilizador.id}  data-estado={utilizador.estado} data-email={utilizador.email} style={{ backgroundColor: "#E9F3DE" }}>
                         {/* Cliente */}
                         <td className='text-start text-dark lh-sm'>
-                            <span className='fs-5 fw-semibold position-relative'>
+                            <span className='fs-6 fw-semibold position-relative'>
                                 {utilizador.nome}
                             </span>
                             <br></br>
-                            <span className='fs-7 fw-semibold  position-relative'>
+                            <span className='fs-8 fw-semibold  position-relative'>
                                Nif: {utilizador.nif}
                             </span>
                             
@@ -121,27 +121,45 @@ export default function UtilizadoresComponent() {
                         </td>
                         
                         <td className='text-center text-dark lh-sm'>
-                            <span className='fs-5 fw-semibold  position-relative'>
-                                {utilizador.id_role}
+                        <span className='fs-6 position-relative'>
+                                {(utilizador.id_role == 1)&&
+                                
+                                <span>Admin</span> 
+                                
+                                }
+                                {(utilizador.id_role == 2)&&
+                                <span>Responsável</span> 
+                                
+                                }
+                                {(utilizador.id_role == 3)&&
+                                
+                                <span>Agente</span>
+                                
+                                }
+                                {(utilizador.id_role == 4)&&
+                                
+                                <span>Utilizador</span>
+                                
+                                }
                             </span>
                         </td>
-                        <td className='text-start text-dark lh-sm'>
-                            <span className='fs-5 fw-semibold position-relative'>
+                        <td className='text-center text-dark lh-sm'>
+                            <span className='fs-6 position-relative'>
                                 {(utilizador.estado == 1)&&
                                 <button
                                 
-                                className='btn btn-warning w-100 fw-semibold' onClick={() => {Estado(utilizador.id)}}>
+                                className='btn btn-success' onClick={() => {Estado(utilizador.id)}}>
                                 
-                                Pendente
+                                Ativa
                                 
                             </button>
                                 }
-                                {(utilizador.estado == 2)&&
+                                {(utilizador.estado == 0)&&
                                 <button
                                 
-                                className='btn btn-success w-100 fw-semibold' onClick={() => {Estado(utilizador.id)}}>
+                                className='btn btn-danger' onClick={() => {Estado(utilizador.id)}}>
                                 
-                                Aceite
+                                Desativa
                                 
                             </button>
                                 }
@@ -149,14 +167,19 @@ export default function UtilizadoresComponent() {
                             
                             
                         </td>
-                        <td className='text-start text-dark lh-sm'>
+                        <td className='text-center text-dark lh-sm'>
                             <span className='fs-6 fw-semibold  position-relative'>
+                                {utilizador.pontos}
+                            </span>
+                        </td>
+                        <td className='text-start text-dark lh-sm'>
+                            <span className='fs-6 position-relative'>
                                 {utilizador.data_nascimento}
                             </span>
                         </td>
                         <td className='text-start text-dark lh-sm'>
                             <span className='fs-5 fw-semibold  position-relative'>
-                                {utilizador.fotografia}
+                            <img className="photo" width={"55%"} height={"55%"} src={utilizador.fotografia} alt="new" />
                             </span>
                         </td>
                 
@@ -201,16 +224,18 @@ export default function UtilizadoresComponent() {
                 </div>
             </div>
             <div className="mb-3 row px-2">
-                <div className='col p-3 bg-white rounded-4 border shadow'>
-                    <table className='table'>
+                <div className='col p-3 rounded-4 border shadow' style={{ backgroundColor: "#E9F3DE" }}>
+                    <table className='table' style={{ backgroundColor: "#E9F3DE" }}>
                         <thead>
                             <tr className=''>
                                 <th className='text-start' style={{ width: '15%' }}>Nome</th>
                                 <th className='text-start' style={{ width: '10%' }}>Email</th>
                                 <th className='text-center' style={{ width: '10%' }}>Role</th>
-                                <th className='text-center' style={{ width: '10%' }}>Estado</th>
+                                <th className='text-center' style={{ width: '5%' }}>Estado</th>
+                                <th className='text-center' style={{ width: '5%' }}>Pontos</th>
                                 <th className='text-center' style={{ width: '5%' }}>Data de Nascimento</th>
                                 <th className='text-center' style={{ width: '10%' }}>Fotografia</th>
+                                <th className='text-center' style={{ width: '10%' }}></th>
                             </tr>
                         </thead>
                         <tbody>

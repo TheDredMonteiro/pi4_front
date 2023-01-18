@@ -17,7 +17,7 @@ const Login = () => {
         console.log("entrou login");
         alert("entrou login")
         e.preventDefault();
-        axios.post('http://localhost:8000/user/login', { email }).then(response => {
+        axios.post('http://localhost:8000/user/login?email=' + email,  { email }).then(response => {
             const dadoServidor = response.data;
             if (dadoServidor.resultado.rows[0].email === email) {
                 setSuccess('Coloque o código que recebeu em seu e-mail.');
