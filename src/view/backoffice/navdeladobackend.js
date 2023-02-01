@@ -43,14 +43,14 @@ export default function Nav_Lado_Backend_Component(props) {
                         </Link>
                     </li>
                     <li className='mb-2'>
-                        <Link to='/back-office/clientes'
+                        <Link to='/backend/utilizadores'
                             className='btn btn-outline-secondary border-0 rounded-0 px-2 px-sm-0  d-flex'
                             onFocus={e => setTimeout(() => { e.target.blur() }, 200)}>
                             &nbsp;&nbsp;&nbsp;<i class="fs-5 bi bi-people-fill" style={{ color: "#46483C"}}></i> &nbsp;<span className=' d-none d-sm-inline fw-semibold' style={{ color: "#46483C", fontSize: "20px" }}>Utilizadores</span>
                         </Link>
                     </li>
                     <li className='mb-2'>
-                        <Link to='/back-office/estatisticas'
+                        <Link to='/backend/pontosinteresse'
                             className='btn btn-outline-secondary border-0 rounded-0 px-2 px-sm-0  d-flex'
                             onFocus={e => setTimeout(() => { e.target.blur() }, 200)}>
                             &nbsp;&nbsp;&nbsp;<i class="fs-5 bi bi-geo-alt-fill" style={{ color: "#46483C"}}></i> &nbsp;<span className=' d-none d-sm-inline fw-semibold' style={{ color: "#46483C", fontSize: "20px" }}>Ponto de Interesse</span>

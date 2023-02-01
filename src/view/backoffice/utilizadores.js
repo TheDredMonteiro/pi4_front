@@ -103,11 +103,11 @@ export default function UtilizadoresComponent() {
                     <tr className='align-middle' key={utilizador.id} id={utilizador.id} data-estado={utilizador.estado} data-email={utilizador.email} style={{ backgroundColor: "#E9F3DE" }}>
                         {/* Cliente */}
                         <td className='text-start text-dark lh-sm'>
-                            <span className='fw-semibold position-relative' style={{ fontSize: "13px" }}>
+                            <span className='fw-semibold position-relative' style={{ fontSize: "15px" }}>
                                 {utilizador.nome}
                             </span>
                             <br></br>
-                            <span className='position-relative' style={{ fontSize: "13px" }}>
+                            <span className='position-relative' style={{ fontSize: "14px" }}>
                                 Nif: {utilizador.nif}
                             </span>
 
@@ -145,8 +145,8 @@ export default function UtilizadoresComponent() {
                             <span className='position-relative' style={{ fontSize: "11px" }}>
                                 {(utilizador.estado == 1) &&
                                     <button
-
-                                        className='btn btn-success' onClick={() => { Estado(utilizador.id) }}>
+                                    className='btn-estado fw-semibold border-0' style={{width : '70px', borderRadius: '100px'}}
+                                         onClick={() => { Estado(utilizador.id) }}>
 
                                         Ativa
 
@@ -154,8 +154,8 @@ export default function UtilizadoresComponent() {
                                 }
                                 {(utilizador.estado == 0) &&
                                     <button
-
-                                        className='btn btn-danger' onClick={() => { Estado(utilizador.id) }}>
+                                    className='btn-estado fw-semibold border-0' style={{width : '70px', borderRadius: '100px', backgroundColor:'red'}}
+                                         onClick={() => { Estado(utilizador.id) }}>
 
                                         Desativa
 
@@ -177,13 +177,13 @@ export default function UtilizadoresComponent() {
                         </td>
                         <td className='text-start text-dark lh-sm'>
                             <span className='fs-5 fw-semibold  position-relative'>
-                                <img className="photo" width={"55%"} height={"55%"} src={utilizador.fotografia} />
+                                <img className="photo" width={"85%"} height={"85%"} src={utilizador.fotografia} />
                             </span>
                         </td>
                         <td >
-                            <Link to='' className="btn btn-warning me-2">
+                            <Link to=''>
                             
-                               Editar</Link>
+                            <i class="bi bi-pencil-fill"></i></Link>
                         </td>
                         
 
@@ -220,17 +220,17 @@ export default function UtilizadoresComponent() {
                             Data de criação
                         </button>
                         <ul className="dropdown-menu" aria-labelledby="dropdown-filtro">
-                            <li><button className="dropdown-item" onClick={e => { handleFiltro('nome', 'ASC', e.target.textContent) }} type='button'>Nome de cliente (A-Z)</button></li>
-                            <li><button className="dropdown-item" onClick={e => { handleFiltro('nome', 'DESC', e.target.textContent) }} type='button'>Nome de cliente (Z-A)</button></li>
+                            <li><button className="dropdown-item" onClick={e => { handleFiltro('nome', 'ASC', e.target.textContent) }} type='button'>Nome de utilizador (A-Z)</button></li>
+                            <li><button className="dropdown-item" onClick={e => { handleFiltro('nome', 'DESC', e.target.textContent) }} type='button'>Nome de utilizador (Z-A)</button></li>
                             <li><button className="dropdown-item" onClick={e => { handleFiltro('id_role', 'ASC', e.target.textContent) }} type='button'>Role</button></li>
                             <li><button className="dropdown-item" onClick={e => { handleFiltro('estado', 'DESC', e.target.textContent) }} type='button'>Estado</button></li>
                         </ul>
                     </div>
 
                 </div>
-                <Link to='' className='mb-3 btn btn-success w-25' >
-                <i className='me-2  text-danger'></i>
-                Adicionar Utilizador
+                <Link to='' className='btn-login fw-semibold border-0' style={{width : '200px' }}>
+                
+                Novo Utilizador
             </Link>
             </div>
         

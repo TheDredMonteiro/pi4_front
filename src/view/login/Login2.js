@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, Navigate } from "react-router-dom";
 
 import axios from 'axios';
 import AuthService from "../../view/auth.service";
@@ -43,8 +43,8 @@ export default function Login2Component(props) {
 
                 if (res.success) {
                     alert("sucesso")
-                   
-                    navigate('/backend/utilizadores');
+                    navigate("/backend/utilizadores");
+                    alert("sucesso2")
                 } else {
 
                     alert(res.response.data.message)
@@ -70,6 +70,9 @@ export default function Login2Component(props) {
                 <img src="logo192.png" alt="logo" className="logo my-2" />
                 <div className='h3 text-dark'>
                     Login
+                </div>
+                <div className='h6 text-dark'>
+                    Entre na sua conta
                 </div>
                 <br></br>
 
@@ -129,17 +132,14 @@ export default function Login2Component(props) {
                     }}
                 />
                 &nbsp;
+                
                 <div className='justify-content-end'>
-                    <button onClick={e => { HandleLogin(e) }} className='btn btn-success w-20  fw-semibold' width={100} type='submit' style={{ transition: '0.5s' }}>
-                        {loading &&
-                            <div className="spinner-border spinner-border-sm fs-6 text-dark me-2" role="status">
-                                <span className="visually-hidden">Loading...</span>
-                            </div>
-                        }
+                    <button onClick={e => { HandleLogin(e) }} className=' btn-login fw-semibold border-0' type='submit' style={{ transition: '0.5s', width : '320px' }}>
+                        
                         <span id='login-btn-text'>Entrar</span>
                     </button>
                 </div>
-
+                
 
 
             </div>

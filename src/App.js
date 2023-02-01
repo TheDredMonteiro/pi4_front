@@ -5,6 +5,8 @@ import './styles/index.css'
 
 import PrivateRoute from './view/backoffice/private_route'
 import Utilizadores from './view/backoffice/utilizadores'
+import PontosInteresse from './view/backoffice/pontosinteresse'
+
 import NavDeLadob from './view/backoffice/navdeladobackend'
 import FrontPage from './view/landingpage/frontpage'
 import LandingPage from './view/landingpage/landingpage'
@@ -103,6 +105,9 @@ export default function App() {
 				} />
 				<Route path='/backend/utilizadores' element={
 					<BackOffice pagina={<Utilizadores />} />
+				} />
+				<Route path='/backend/pontosinteresse' element={
+					<BackOffice pagina={<PontosInteresse />} />
 				} />
 				{/*
 				<Route path='/back-office/frontLivros/:mail/:pass' element={
