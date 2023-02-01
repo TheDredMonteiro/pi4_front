@@ -3,13 +3,13 @@ import { BrowserRouter as Router, Route, Routes, Navigate, useNavigate } from 'r
 import authService from './view/auth.service';
 import './styles/index.css'
 
-
 import PrivateRoute from './view/backoffice/private_route'
 import Utilizadores from './view/backoffice/utilizadores'
 import NavDeLadob from './view/backoffice/navdeladobackend'
 import FrontPage from './view/landingpage/frontpage'
 import LandingPage from './view/landingpage/landingpage'
 import Login from './view/login/Login';
+import Login2 from './view/login/Login2';
 /*import BoLogin from './view/backoffice/login'
 import BoRegistar from './view/backoffice/registar'
 import BoRegistar2 from './view/backoffice/registar2'
@@ -82,7 +82,7 @@ export default function App() {
 				<Route exact path='/' element={
 					<>
 
-						<Login />
+						<Login2 />
 
 					</>
 				} />

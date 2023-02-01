@@ -2,6 +2,16 @@ import axios from 'axios'
 import ip from '../ip'
 
 class AuthService {
+    login(email, password) {
+        return axios
+            .post('http://localhost:8000/user/login2', { email, password })
+            .then(res => {
+                if (res.data.token) {
+                    localStorage.setItem('user', JSON.stringify(res.data))
+                }
+                return res.data
+            }, rejected => { return rejected })
+    }
     login1(email) {
         return axios
             .post(ip + '/user/login1', { email})
