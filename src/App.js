@@ -6,6 +6,8 @@ import './styles/index.css'
 import PrivateRoute from './view/backoffice/private_route'
 import Utilizadores from './view/backoffice/utilizadores'
 import PontosInteresse from './view/backoffice/pontosinteresse'
+import Recuperar from './view/backoffice/recuperar'
+import Recuperar2 from './view/backoffice/recuperar2'
 
 import NavDeLadob from './view/backoffice/navdeladobackend'
 import FrontPage from './view/landingpage/frontpage'
@@ -51,7 +53,7 @@ export default function App() {
 			<PrivateRoute auth={login}>
 				<div className='container-fluid'>
 					<div className='row vh-100'>
-						<NavDeLadob/>
+						<NavDeLadob />
 						{props.pagina}
 						<UsersModalComponent />
 						<CriarUserModalComponent />
@@ -76,7 +78,7 @@ export default function App() {
 			</PrivateRoute >
 		)
 	}
-	
+
 	//<NavDeCima auth={login} /> <Footer />
 	return (
 		<Router>
@@ -88,7 +90,20 @@ export default function App() {
 
 					</>
 				} />
+				<Route exact path='/recuperar' element={
+					<>
 
+						<Recuperar />
+
+					</>
+				} />
+				<Route exact path='/recuperar2/:mail' element={
+					<>
+
+						<Recuperar2 />
+
+					</>
+				} />
 				<Route exact path='/login' element={
 					<>
 

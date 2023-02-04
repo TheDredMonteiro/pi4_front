@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useNavigate, Navigate } from "react-router-dom";
+import { Link, redirect, useNavigate, Navigate } from "react-router-dom";
 
 import axios from 'axios';
 import AuthService from "../../view/auth.service";
@@ -7,13 +7,15 @@ import ip from '../../ip'
 import authHeader from '../auth-header';
 import './Login.css';
 
-
-export default function Login2Component(props) {
+export default function RecuperarComponent(props) {
 
     const [loading, setLoading] = useState(false)
     const [clientes, setCliente] = useState([])
     const [userEmail, setUserEmail] = useState('')
     const [userPass, setUserPass] = useState('')
+    const [email, setEmail] = useState('');
+    const [success, setSuccess] = useState('');
+    const [failedAuthentication, setFailedAuthentication] = useState('');
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -29,6 +31,26 @@ export default function Login2Component(props) {
         alert(userPass)
 
     }*/
+    const doRecuperar = (e) => {
+
+        
+        e.preventDefault();
+        axios.get('http://localhost:8000/user/login?email=' + userEmail ,authHeader())
+        .then(res => {
+
+            if (res.data.success) {
+                alert(userEmail);
+                navigate("/recuperar2/" + userEmail);
+
+            } else {
+
+                
+                alert("sucesso23")
+            }
+
+        })
+    };
+    
     function HandleLogin(e) {
         e.preventDefault()
         setLoading(true)
@@ -36,7 +58,7 @@ export default function Login2Component(props) {
         let btnText = document.getElementById('login-btn-text')
 
 
-
+/*
         AuthService
             .login(userEmail, userPass)
             .then(res => {
@@ -60,7 +82,7 @@ export default function Login2Component(props) {
                 }
 
             })
-
+*/
     }
 
     return (
@@ -69,17 +91,9 @@ export default function Login2Component(props) {
             <div className='justify-content-top align-items-center   d-flex flex-column '>
                 <img src="logo192.png" alt="logo" className="logo my-2" />
                 <div className='h3 text-dark'>
-                    Login
-                </div>
-                <div className='h6 text-dark'>
-                    Entre na sua conta
+                    Recuperar a conta
                 </div>
                 <br></br>
-
-
-
-
-
                 <input
                     // id='user-username-input'
 
@@ -105,39 +119,15 @@ export default function Login2Component(props) {
                         }
                     }}
                 />
-                &nbsp;
+                
 
-                <input
-                    type="password"
-                    width={100}
-                    className="form-control focus-warning text-dark w-25  rounded-3"
-                    id="user-pass-input"
-                    placeholder="Password"
-
-                    required
-                    value={userPass}
-                    onChange={e => { setUserPass(e.target.value) }}
-                    onInput={e => {
-                        if (!e.target.validity.valid) {
-                            e.target.classList.add('focus-danger')
-
-                            if (e.target.validity.valueMissing) {
-                                e.target.setCustomValidity('A password é de preenchimento obrigatório.')
-                                e.target.reportValidity()
-                            } else {
-                                e.target.setCustomValidity('')
-                                e.target.classList.remove('focus-danger')
-                            }
-                        }
-                    }}
-                />
-                &nbsp;
-                <Link to='/recuperar'>Perdeste a password? Recupera aqui</Link>
+                
+                
                 &nbsp;
                 <div className='justify-content-end'>
-                    <button onClick={e => { HandleLogin(e) }} className=' btn-login fw-semibold border-0' type='submit' style={{ transition: '0.5s', width : '320px' }}>
+                    <button onClick={e => { doRecuperar(e) }} className=' btn-login fw-semibold border-0' type='submit' style={{ transition: '0.5s', width : '320px' }}>
                         
-                        <span id='login-btn-text'>Entrar</span>
+                        <span id='login-btn-text'>Recuperar</span>
                     </button>
                 </div>
                 

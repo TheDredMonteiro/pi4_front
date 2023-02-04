@@ -1,0 +1,91 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+body {
+    font-family: 'Poppins';
+    background-color: #E9F3DE;
+}
+
+.box-form {
+    font-size: 26px;
+}
+.logo {
+    height: 70px;
+    width: 246px;
+}
+
+.logo-area {
+    margin-bottom: 2%;
+}
+
+.logo-area img {
+    margin-bottom: 1%;
+}
+
+.section-login {
+    padding: 5% 0;
+}
+
+.text-login {
+    font-size: 32px;
+}
+
+.label-email {
+    font-size: 20px;
+}
+
+
+.input-email, .input-otp{
+    gap: 10px;
+    width: 100%;
+    height: 56px;
+    background: #FFFFFF;
+    border: 1px solid #D3D4A9;
+    border-radius: 4px;
+    padding: 1%;
+}
+
+.btn-login{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    gap: 8px;
+    width: 100%;
+    height: 40px;
+    background: #526600;
+    color: #ECB357;
+    border-radius: 100px;
+    cursor: pointer;
+}
+.btn-estado{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    gap: 8px;
+    width: 100%;
+    height: 40px;
+    background: #526600;
+    color: #ffffff;
+    border-radius: 100px;
+    cursor: pointer;
+}
+.text-email-destino, .label-email{
+    font-size: 16px;
+    color: #616D38;
+}
+
+.input-otp::placeholder{
+    text-align: center;
+    color: #D3D4A9;
+}
+
+.paragraph1{
+    color: #616D38;
+}
