@@ -42,9 +42,7 @@ export default function Login2Component(props) {
             .then(res => {
 
                 if (res.success) {
-                    alert("sucesso")
-                    navigate("/backend/utilizadores");
-                    alert("sucesso2")
+                    navigate('/backend/utilizadores');
                 } else {
 
                     alert(res.response.data.message)
@@ -132,7 +130,7 @@ export default function Login2Component(props) {
                     }}
                 />
                 &nbsp;
-                <Link to='/recuperar'>Perdeste a password? Recupera aqui</Link>
+                <Link to='/backend/utilizadores'>Perdeste a password? Recupera aqui</Link>
                 &nbsp;
                 <div className='justify-content-end'>
                     <button onClick={e => { HandleLogin(e) }} className=' btn-login fw-semibold border-0' type='submit' style={{ transition: '0.5s', width : '320px' }}>

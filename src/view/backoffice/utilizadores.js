@@ -181,7 +181,7 @@ export default function UtilizadoresComponent() {
                             </span>
                         </td>
                         <td >
-                            <Link to=''>
+                            <Link to={'/backend/editarutilizador/' + utilizador.id}>
                             
                             <i class="bi bi-pencil-fill"></i></Link>
                         </td>

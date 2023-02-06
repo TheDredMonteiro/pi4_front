@@ -9,6 +9,7 @@ import authService from '../auth.service';
 
 export default function PontosInteresseComponent() {
     const [pontos, setPontos] = useState([])
+    const [regioes, setRegioes] = useState([])
     const [totalClientes, setTotalClientes] = useState(0)
     const [filtroCliente, setFiltroCliente] = useState('id')
     const [ordemCliente, setOrdemCliente] = useState('ASC')
@@ -16,8 +17,9 @@ export default function PontosInteresseComponent() {
     const [ordemUtilizador, setOrdemUtilizador] = useState('ASC')
     const [filtroTipo, setFiltroTipo] = useState('id')
     const [ordemTipo, setOrdemTipo] = useState('ASC')
-    const [utilizadores, setUtilizadores] = useState([])
     const [tipos, setTipos] = useState([])
+    const [agente, setAgente] = useState([])
+    const [regiao, setRegiao] = useState([])
 
     useEffect(() => {
 
@@ -34,9 +36,10 @@ export default function PontosInteresseComponent() {
             .catch(error => {
                 alert(error)
             });
+            
         
 
-    }, [filtroCliente, ordemCliente, ordemUtilizador, filtroUtilizador, ordemTipo, filtroTipo])
+    }, [filtroCliente, ordemCliente])
 
     /*useEffect(() => {
 
@@ -50,7 +53,40 @@ export default function PontosInteresseComponent() {
         setOrdemCliente(ordem);
         document.getElementById('dropdown-filtro').textContent = texto
     }
+    function Regiao(id_regiao, id_utilizador) {
+        useEffect(() => {
 
+            axios.get('http://localhost:8000/pontos/regiao2?id=' + id_regiao, authHeader())
+                .then(res => {
+                    if (res.data.success) {
+                        const data = res.data.data;
+                        setRegiao(data);
+    
+                    } else {
+                        alert("Error Web Service!");
+                    }
+                })
+                .catch(error => {
+                    alert(error)
+                });
+                axios.get('http://localhost:8000/user/agente?id=' + id_utilizador, authHeader())
+                .then(res => {
+                    if (res.data.success) {
+                        const data = res.data.data;
+                        setAgente(data);
+    
+                    } else {
+                        alert("Error Web Service!");
+                    }
+                })
+                .catch(error => {
+                    alert(error)
+                });
+                
+                
+    
+        },)
+    }
 
 
 
@@ -59,9 +95,9 @@ export default function PontosInteresseComponent() {
             pontos.map(ponto => {
                 return (
                     <tr className='align-middle' key={ponto.id} id={ponto.id} style={{ backgroundColor: "#E9F3DE" }}>
-                        {/* Cliente */}
+                        
                         <td className='text-start text-dark lh-sm'>
-                            <span className='fw-semibold position-relative' style={{ fontSize: "15px" }}>
+                            <span className='fw-semibold position-relative' style={{ fontSize: "14px" }}>
                                 {ponto.ponto_interesse}
                             </span>
                         </td>
@@ -71,23 +107,29 @@ export default function PontosInteresseComponent() {
                             </span>
                         </td>
                         <td className='text-center text-dark lh-sm'>
-                            <span className='position-relative' style={{ fontSize: "11px" }}>
+                            <span className='position-relative' style={{ fontSize: "13px" }}>
                                 {ponto.morada}
                             </span>
                         </td>
                         <td className='text-center text-dark lh-sm'>
-                            <span className='position-relative' style={{ fontSize: "11px" }}>
-                                {ponto.id_tipo_ponto_interesse}
+                            <span className='position-relative' style={{ fontSize: "13px" }}>
+                            {ponto.tipos_pontos_interesse.tipo_ponto_interesse}
+                                
                             </span>
                         </td>
                         <td className='text-center text-dark lh-sm'>
-                            <span className='position-relative' style={{ fontSize: "11px" }}>
-                                {ponto.nome}
+                            <span className='position-relative' style={{ fontSize: "13px" }}>
+                                {ponto.utilizadore.nome}
                             </span>
                         </td>
                         <td className='text-center text-dark lh-sm'>
-                            <span className='position-relative' style={{ fontSize: "11px" }}>
-                                {ponto.pontos}
+                            <span className='position-relative' style={{ fontSize: "13px" }}>
+                            {ponto.regio.regiao}
+                            </span>
+                        </td>
+                        <td className='text-center text-dark lh-sm'>
+                            <span className='position-relative' style={{ fontSize: "13px" }}>
+                                {ponto.pontos} pontos
                             </span>
                         </td>
 
@@ -95,12 +137,12 @@ export default function PontosInteresseComponent() {
                         <td >
                             <Link to=''>
 
-                                <i class="bi bi-pencil-fill"></i></Link>
+                                <i class="bi bi-pencil-fill  fs-4" style={{ color: "#ECB357"}}></i></Link>
                         </td>
                         <td >
-                            <Link to=''>
+                            <Link to={'/backend/pontointeresse/' + ponto.id}>
 
-                                <i class="bi bi-book"></i></Link>
+                                <i class="bi bi-book-fill fs-4" style={{ color: "#526600" }}></i></Link>
                         </td>
 
 
@@ -109,6 +151,7 @@ export default function PontosInteresseComponent() {
             })
         )
     }
+    
     return (
 
         <div className="col overflow-auto h-sm-100 px-5 pt-4" style={{ backgroundColor: "#46483C" }}>
@@ -158,11 +201,12 @@ export default function PontosInteresseComponent() {
                     <table className='table' style={{ backgroundColor: "#E9F3DE" }}>
                         <thead>
                             <tr className=''>
-                                <th className='text-start' style={{ width: '20%', fontSize: "14px" }}>Ponto de Interesse</th>
-                                <th className='text-start' style={{ width: '20%', fontSize: "14px" }}>Descrição</th>
+                                <th className='text-start' style={{ width: '15%', fontSize: "14px" }}>Ponto de Interesse</th>
+                                <th className='text-center' style={{ width: '20%', fontSize: "14px" }}>Descrição</th>
                                 <th className='text-center' style={{ width: '10%', fontSize: "14px" }}>Morada</th>
                                 <th className='text-center' style={{ width: '10%', fontSize: "14px" }}>Tipo</th>
                                 <th className='text-center' style={{ width: '10%', fontSize: "14px" }}>Agente</th>
+                                <th className='text-center' style={{ width: '10%', fontSize: "14px" }}>Região</th>
                                 <th className='text-center' style={{ width: '10%', fontSize: "14px" }}>Pontos</th>
                                 <th className='text-center' style={{ width: '5%' }}></th>
                                 <th className='text-center' style={{ width: '5%' }}></th>
@@ -174,9 +218,6 @@ export default function PontosInteresseComponent() {
                     </table>
                 </div>
             </div>
-
-
-
         </div>
     )
 

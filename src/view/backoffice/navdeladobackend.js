@@ -85,7 +85,7 @@ export default function Nav_Lado_Backend_Component(props) {
                         <li><button className='dropdown-item'
                                     onClick={e => { authService.logout(); navigate('/'); }}
                                 >
-                                    &nbsp;&nbsp;&nbsp;<i className='bi bi-door-open-fill fs-5'></i> &nbsp;
+                                    &nbsp;&nbsp;&nbsp;<i className='bi bi-door-open-fill fs-5' style={{ color: "#46483C"}}></i> &nbsp;
                                     <span className=' d-none d-sm-inline fw-bold' style={{ color: "#46483C", fontSize: "20px" }}>Sair</span>
                                 </button></li>
                         </div>

@@ -6,6 +6,8 @@ import './styles/index.css'
 import PrivateRoute from './view/backoffice/private_route'
 import Utilizadores from './view/backoffice/utilizadores'
 import PontosInteresse from './view/backoffice/pontosinteresse'
+import PontoInteresse from './view/backoffice/pontointeresse'
+import EditarUtilizador from './view/backoffice/editarutilizador'
 import Recuperar from './view/backoffice/recuperar'
 import Recuperar2 from './view/backoffice/recuperar2'
 
@@ -120,6 +122,12 @@ export default function App() {
 				} />
 				<Route path='/backend/utilizadores' element={
 					<BackOffice pagina={<Utilizadores />} />
+				} />
+				<Route path='/backend/pontointeresse/:id' element={
+					<BackOffice pagina={<PontoInteresse />} />
+				} />
+				<Route path='/backend/editarutilizador/:id' element={
+					<BackOffice pagina={<EditarUtilizador />} />
 				} />
 				<Route path='/backend/pontosinteresse' element={
 					<BackOffice pagina={<PontosInteresse />} />
