@@ -62,7 +62,7 @@ export default function Login2Component(props) {
     }
 
     return (
-        <div className='container-fluid vh-100 col overflow-auto  px-5 pt-4 bg-light text-dark'>
+        <div className='container-fluid vh-100 col overflow-auto  px-5 pt-4 bg-light text-dark' style={{ fontFamily:'Poppins'}}>
            
             <div className='justify-content-top align-items-center   d-flex flex-column '>
                 <img src="logo192.png" alt="logo" className="logo my-2" />

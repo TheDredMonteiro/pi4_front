@@ -258,7 +258,7 @@ export default function AddUtilizadorComponent() {
                         }}
                     />
                     <br></br>
-                    <img className="photo" width={"50%"} height={"50%"} src={Utilizador.fotografia} />
+                    <img className="photo" width={"50%"} height={"50%"} src={campFotografia} />
                     <br></br>
                     <br></br>
                     <br></br>
