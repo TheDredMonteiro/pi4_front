@@ -44,7 +44,7 @@ export default function PontoInteresseComponent() {
             <div className="mb-3 row">
                 <div className='col-6'>
                     <span className='h5 fw-semibold' style={{ color: "#D3D4A9" }}>
-                        Pontos de Interesse - {ponto.ponto_interesse}
+                        Ponto de Interesse - {ponto.ponto_interesse}
                 &nbsp;&nbsp;
                         <Link to=''><i class="bi bi-pencil-fill  fs-5" style={{ color: "#ECB357"}}></i></Link>
                     </span>

@@ -228,7 +228,7 @@ export default function UtilizadoresComponent() {
                     </div>
 
                 </div>
-                <Link to='' className='btn-login fw-semibold border-0' style={{width : '200px' }}>
+                <Link to='/backend/addutilizador' className='btn-login fw-semibold border-0' style={{width : '200px' }}>
                 
                 Novo Utilizador
             </Link>
