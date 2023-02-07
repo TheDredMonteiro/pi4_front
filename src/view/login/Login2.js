@@ -5,7 +5,7 @@ import axios from 'axios';
 import AuthService from "../../view/auth.service";
 import ip from '../../ip'
 import authHeader from '../auth-header';
-import './Login.css';
+//import './Login.css';
 
 
 export default function Login2Component(props) {
@@ -42,7 +42,22 @@ export default function Login2Component(props) {
             .then(res => {
 
                 if (res.success) {
-                    navigate('/backend/utilizadores');
+                    if(res.role == 1)
+                    {
+                        alert("admin")
+                        navigate('/backend/utilizadores/' + 1);
+                    }
+                    else if(res.role == 2)
+                    {
+                        alert("responsavel")
+                        navigate('/backend/regioes/' + 2);
+                    }
+                    else if(res.role == 3)
+                    {
+                        alert("agente")
+                        navigate('/backend/pontosinteresse/' + 3);
+                    }
+                    
                 } else {
 
                     alert(res.response.data.message)
@@ -62,28 +77,37 @@ export default function Login2Component(props) {
     }
 
     return (
-        <div className='container-fluid vh-100 col overflow-auto  px-5 pt-4 bg-light text-dark' style={{ fontFamily:'Poppins'}}>
-           
-            <div className='justify-content-top align-items-center   d-flex flex-column '>
-                <img src="logo192.png" alt="logo" className="logo my-2" />
-                <div className='h3 text-dark'>
-                    Login
-                </div>
-                <div className='h6 text-dark'>
+        <div className='container-fluid vh-100 col overflow-auto  px-5 pt-4  text-dark' style={{ fontFamily: 'Poppins', backgroundColor: "#E9F3DE" }}>
+
+
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <div class="row">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-4">
+                <div className='h3 text-dark justify-content-top align-items-center   d-flex flex-column '>
+                <img src="logo192.png" alt="logo" className="logo my-2 " />
+                
                     Entre na sua conta
                 </div>
+
                 <br></br>
 
 
 
-
-
+                
+                <span style={{ fontSize: "18px"}} >
+                        Email
+                    </span>
+                    
                 <input
                     // id='user-username-input'
 
-                    className='form-control focus-warning text-dark w-25 rounded-3'
+                    className='form-control focus-warning text-dark w-100 rounded-3'
                     type='text'
-                    placeholder='Email'
+                    placeholder='Insira o seu email'
                     autoComplete='none'
                     autoCapitalize='words'
                     required
@@ -103,14 +127,16 @@ export default function Login2Component(props) {
                         }
                     }}
                 />
-                &nbsp;
-
+               <br></br>
+                <span style={{ fontSize: "18px" }} >
+                    Password
+                </span>
                 <input
                     type="password"
                     width={100}
-                    className="form-control focus-warning text-dark w-25  rounded-3"
+                    className="form-control focus-warning text-dark w-100  rounded-3"
                     id="user-pass-input"
-                    placeholder="Password"
+                    placeholder="Insira a sua password"
 
                     required
                     value={userPass}
@@ -129,19 +155,25 @@ export default function Login2Component(props) {
                         }
                     }}
                 />
-                &nbsp;
-                <Link to='/backend/utilizadores'>Perdeste a password? Recupera aqui</Link>
-                &nbsp;
-                <div className='justify-content-end'>
-                    <button onClick={e => { HandleLogin(e) }} className=' btn-login fw-semibold border-0' type='submit' style={{ transition: '0.5s', width : '320px' }}>
-                        
+                <br></br>
+                <br></br>
+
+
+                <div className='justify-content-center'>
+                    <button onClick={e => { HandleLogin(e) }} className=' btn-login fw-semibold w-100 border-0' type='submit' style={{ transition: '0.5s'}}>
+
                         <span id='login-btn-text'>Entrar</span>
                     </button>
+                    <Link style={{ fontSize: "15px" }} to='/recuperar' >Esqueceu-se da password?</Link>
                 </div>
-                
-
-
+                </div>
+                <div class="col-sm-4"></div>
             </div>
+
+
+
+
+
 
         </div>
 

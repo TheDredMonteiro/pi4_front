@@ -4,9 +4,9 @@ import React, { useEffect, useState } from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
 import ip from '../../ip'
 import authHeader from '../auth-header';
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import authService from '../auth.service';
-
+import { useParams } from "react-router-dom";
 export default function PontosInteresseComponent() {
     const [pontos, setPontos] = useState([])
     const [regioes, setRegioes] = useState([])
@@ -20,9 +20,15 @@ export default function PontosInteresseComponent() {
     const [tipos, setTipos] = useState([])
     const [agente, setAgente] = useState([])
     const [regiao, setRegiao] = useState([])
-
+    const [userrole, setUserrole] = useState('')
+    const navigate = useNavigate()
+    const { role } = useParams();
     useEffect(() => {
-
+        
+        if((role != 2) && (role != 1)&& (role != 3))
+        {
+            authService.logout(); navigate('/');
+        }
         axios.get('http://localhost:8000/pontos/list?ordem=' + ordemCliente + '&filtro=' + filtroCliente, authHeader())
             .then(res => {
                 if (res.data.success) {

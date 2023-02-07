@@ -54,26 +54,29 @@ export default function RecuperarComponent(props) {
     }
     
     return (
-        <div className='container-fluid vh-100 col overflow-auto  px-5 pt-4 bg-light text-dark'>
-           
-            <div className='justify-content-top align-items-center   d-flex flex-column '>
-                <img src={Logo} alt="logo" className="logo my-2" />
-                <div className='h3 text-dark'>
-                    Recuperar a conta
+        <div className='container-fluid vh-100 col overflow-auto  px-5 pt-4 text-dark'>
+           <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <div class="row">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-4">
+                <div className='h3 text-dark justify-content-top align-items-center   d-flex flex-column '>
+                <img src={Logo} alt="logo" className="logo my-2 " />
+                    Crie uma nova password
                 </div>
-                
+
                 <br></br>
-
-
-
-
-
+                <span style={{ fontSize: "18px"}} >
+                Password Antiga
+                    </span>
                 <input
                     // id='user-username-input'
 
-                    className='form-control focus-warning text-dark w-25 rounded-3'
+                    className='form-control focus-warning text-dark w-100 rounded-3'
                     type="password"
-                    placeholder='Password Antiga'
+                    placeholder='Inserir a Password Antiga'
                     autoComplete='none'
                     autoCapitalize='words'
                     required
@@ -93,13 +96,16 @@ export default function RecuperarComponent(props) {
                         }
                     }}
                 />
-                &nbsp;
+                <br></br>
+                <span style={{ fontSize: "18px"}} >
+                Password Nova
+                    </span>
                 <input
                     // id='user-username-input'
 
-                    className='form-control focus-warning text-dark w-25 rounded-3'
+                    className='form-control focus-warning text-dark w-100 rounded-3'
                     type="password"
-                    placeholder='Password Nova'
+                    placeholder='Inserir a Password Nova'
                     autoComplete='none'
                     autoCapitalize='words'
                     required
@@ -120,19 +126,25 @@ export default function RecuperarComponent(props) {
                     }}
                 />
 
+
+
                 
                 
-                &nbsp;
-                <div className='justify-content-end'>
-                    <button onClick={() => { Mudar() }} className=' btn-login fw-semibold border-0' type='submit' style={{ transition: '0.5s', width : '320px' }}>
+               <br></br>
+               <br></br>
+                
+
+
+               <div className='justify-content-end'>
+                    <button onClick={() => { Mudar() }} className=' btn-login w-100 fw-semibold border-0' type='submit' style={{ transition: '0.5s'}}>
                         
-                        <span id='login-btn-text'>Recuperar</span>
+                        <span id='login-btn-text'>Entrar</span>
                     </button>
                 </div>
-                
-
-
+                </div>
+                <div class="col-sm-4"></div>
             </div>
+           
 
         </div>
 

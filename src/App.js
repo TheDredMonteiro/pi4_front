@@ -6,10 +6,15 @@ import './styles/index.css'
 import PrivateRoute from './view/backoffice/private_route'
 import Utilizadores from './view/backoffice/utilizadores'
 import PontosInteresse from './view/backoffice/pontosinteresse'
+import Recompensas from './view/backoffice/recompensas'
+
 import Regioes from './view/backoffice/regioes'
 import PontoInteresse from './view/backoffice/pontointeresse'
 import EditarUtilizador from './view/backoffice/editarutilizador'
+import EditarRegiao from './view/backoffice/editarregiao'
 import AddUtilizador from './view/backoffice/addutilizador'
+import AddRecompensa from './view/backoffice/addrecompensa'
+import AddRegiao from './view/backoffice/addregiao'
 import Recuperar from './view/backoffice/recuperar'
 import Recuperar2 from './view/backoffice/recuperar2'
 
@@ -122,7 +127,7 @@ export default function App() {
 
 					</>
 				} />
-				<Route path='/backend/utilizadores' element={
+				<Route path='/backend/utilizadores/:role' element={
 					<BackOffice pagina={<Utilizadores />} />
 				} />
 				<Route path='/backend/pontointeresse/:id' element={
@@ -131,14 +136,26 @@ export default function App() {
 				<Route path='/backend/editarutilizador/:id' element={
 					<BackOffice pagina={<EditarUtilizador />} />
 				} />
-				<Route path='/backend/pontosinteresse' element={
+				<Route path='/backend/editarregiao/:id' element={
+					<BackOffice pagina={<EditarRegiao />} />
+				} />
+				<Route path='/backend/pontosinteresse/:role' element={
 					<BackOffice pagina={<PontosInteresse />} />
 				} />
-				<Route path='/backend/regioes' element={
+				<Route path='/backend/recompensas/:role' element={
+					<BackOffice pagina={<Recompensas />} />
+				} />
+				<Route path='/backend/regioes/:role' element={
 					<BackOffice pagina={<Regioes />} />
 				} />
 				<Route path='/backend/addutilizador' element={
 					<BackOffice pagina={<AddUtilizador />} />
+				} />
+				<Route path='/backend/addrecompensa' element={
+					<BackOffice pagina={<AddRecompensa />} />
+				} />
+				<Route path='/backend/addregiao' element={
+					<BackOffice pagina={<AddRegiao />} />
 				} />
 				{/*
 				<Route path='/back-office/frontLivros/:mail/:pass' element={

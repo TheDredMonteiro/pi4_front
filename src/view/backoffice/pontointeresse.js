@@ -103,6 +103,7 @@ export default function PontoInteresseComponent() {
                                     Fotografia 1:
                                     <img className="photo" width={"100%"} height={"100%"} src={ponto.fotografia_1} />
                                 </span>
+                                
                             </div>
                             <div class="col-sm">
                                 <span className='h6 fw-semibold' style={{ color: "#D3D4A9" }}>

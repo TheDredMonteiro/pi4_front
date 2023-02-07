@@ -86,20 +86,35 @@ export default function RecuperarComponent(props) {
     }
 
     return (
-        <div className='container-fluid vh-100 col overflow-auto  px-5 pt-4 bg-light text-dark'>
-           
-            <div className='justify-content-top align-items-center   d-flex flex-column '>
-                <img src="logo192.png" alt="logo" className="logo my-2" />
-                <div className='h3 text-dark'>
-                    Recuperar a conta
+        <div className='container-fluid vh-100 col overflow-auto  px-5 pt-4 text-dark'>
+           <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <div class="row">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-4">
+                <div className='h3 text-dark justify-content-top align-items-center   d-flex flex-column '>
+                <img src="logo192.png" alt="logo" className="logo my-2 " />
+                
+                    Esqueceu-se da password?
                 </div>
+
                 <br></br>
+
+
+
+                
+                <span style={{ fontSize: "18px"}} >
+                        Email
+                    </span>
+                    
                 <input
                     // id='user-username-input'
 
-                    className='form-control focus-warning text-dark w-25 rounded-3'
+                    className='form-control focus-warning text-dark w-100 rounded-3'
                     type='text'
-                    placeholder='Email'
+                    placeholder='Insira o seu email'
                     autoComplete='none'
                     autoCapitalize='words'
                     required
@@ -119,22 +134,20 @@ export default function RecuperarComponent(props) {
                         }
                     }}
                 />
+               <br></br>
+               <br></br>
                 
 
-                
-                
-                &nbsp;
-                <div className='justify-content-end'>
-                    <button onClick={e => { doRecuperar(e) }} className=' btn-login fw-semibold border-0' type='submit' style={{ transition: '0.5s', width : '320px' }}>
+
+                <div className='justify-content-center'>
+                    <button onClick={e => { doRecuperar(e) }} className=' btn-login w-100 fw-semibold border-0' type='submit' style={{ transition: '0.5s' }}>
                         
                         <span id='login-btn-text'>Recuperar</span>
                     </button>
                 </div>
-                
-
-
+                </div>
+                <div class="col-sm-4"></div>
             </div>
-
         </div>
 
     )

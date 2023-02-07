@@ -90,9 +90,6 @@ export default function EditarUtilizadorComponent() {
             data_nascimento: campData,
             password: campPass
         }
-        alert(body.id);
-        alert(body.id_role);
-        console.log(body);
         axios
             .put('http://localhost:8000/user/update', body, authHeader())
 

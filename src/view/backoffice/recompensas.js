@@ -6,25 +6,26 @@ import ip from '../../ip'
 import authHeader from '../auth-header';
 import { Link, useNavigate } from "react-router-dom"
 import authService from '../auth.service';
-
-export default function UtilizadoresComponent() {
-    const [utilizadores, setUtilizadores] = useState([])
-    const [totalClientes, setTotalClientes] = useState(0)
-    const [filtroUtilizador, setFiltroUtilizador] = useState('id')
-    const [ordemUtilizador, setOrdemUtilizador] = useState('ASC')
+import { useParams } from "react-router-dom";
+export default function RecompensasComponent() {
+    const [recompensas, setRecompensas] = useState([])
+    const [filtroCliente, setFiltroCliente] = useState('id')
+    const [ordemCliente, setOrdemCliente] = useState('ASC')
     const [userrole, setUserrole] = useState('')
     const navigate = useNavigate()
-
-
+    const { role } = useParams();
     useEffect(() => {
 
-        setUserrole(authService.getCurrentUser()?.role ?? 'Role')
+        if((role != 2) && (role != 1))
+        {
+            authService.logout(); navigate('/');
+        }
         
-        axios.get('http://localhost:8000/user/list?ordem=' + ordemUtilizador + '&filtro=' + filtroUtilizador, authHeader())
+        axios.get('http://localhost:8000/recompensas/list?ordem=' + ordemCliente + '&filtro=' + filtroCliente, authHeader())
             .then(res => {
                 if (res.data.success) {
                     const data = res.data.data;
-                    setUtilizadores(data);
+                    setRecompensas(data);
 
                 } else {
                     alert("Error Web Service!");
@@ -33,7 +34,10 @@ export default function UtilizadoresComponent() {
             .catch(error => {
                 alert(error)
             });
-    }, [filtroUtilizador, ordemUtilizador])
+            
+        
+
+    }, [filtroCliente, ordemCliente])
 
     /*useEffect(() => {
 
@@ -43,23 +47,24 @@ export default function UtilizadoresComponent() {
             });
     }, [])*/
     function handleFiltro(filtro, ordem, texto) {
-        setFiltroUtilizador(filtro);
-        setOrdemUtilizador(ordem);
+        setFiltroCliente(filtro);
+        setOrdemCliente(ordem);
         document.getElementById('dropdown-filtro').textContent = texto
     }
-
+    
+    
     function Estado(id) {
         const div1 = document.getElementById(id)
         const exampleAttr = div1.getAttribute('data-estado');
         if (exampleAttr == "false") {
             const body = {
                 id: id,
-                estado: 1
+                disponivel: 1
             }
 
             axios
                 .put(
-                    'http://localhost:8000/user/update_estado',
+                    'http://localhost:8000/recompensas/update_disponivel',
                     body,
                     authHeader()
                 )
@@ -76,12 +81,12 @@ export default function UtilizadoresComponent() {
         else if (exampleAttr == "true") {
             const body = {
                 id: id,
-                estado: 0
+                disponivel: 0
             }
 
             axios
                 .put(
-                    'http://localhost:8000/user/update_estado',
+                    'http://localhost:8000/recompensas/update_disponivel',
                     body,
                     authHeader()
                 )
@@ -99,66 +104,42 @@ export default function UtilizadoresComponent() {
     }
 
 
-    function LoadUtilizadores() {
+    function LoadRegioes() {
         return (
-            utilizadores.map(utilizador => {
+            recompensas.map(recompensa => {
                 return (
-                    <tr className='align-middle' key={utilizador.id} id={utilizador.id} data-estado={utilizador.estado} data-email={utilizador.email} style={{ backgroundColor: "#E9F3DE" }}>
-                        {/* Cliente */}
+                    <tr className='align-middle' key={recompensa.id} id={recompensa.id} data-estado={recompensa.disponivel } style={{ backgroundColor: "#E9F3DE" }}>
+                        
                         <td className='text-start text-dark lh-sm'>
-                            <span className='fw-semibold position-relative' style={{ fontSize: "15px" }}>
-                                {utilizador.nome}
-                            </span>
-                            <br></br>
-                            <span className='position-relative' style={{ fontSize: "14px" }}>
-                                Nif: {utilizador.nif}
-                            </span>
-
-                        </td>
-                        <td className='text-start text-dark lh-sm'>
-                            <span className='position-relative'  style={{ fontSize: "13px" }}>
-                                {utilizador.email}
+                            <span className='fw-semibold position-relative' style={{ fontSize: "14px" }}>
+                                {recompensa.recompensa}
                             </span>
                         </td>
-
                         <td className='text-center text-dark lh-sm'>
                             <span className='position-relative' style={{ fontSize: "13px" }}>
-                                {(utilizador.id_role == 1) &&
-
-                                    <span>Admin</span>
-
-                                }
-                                {(utilizador.id_role == 2) &&
-                                    <span>Responsável</span>
-
-                                }
-                                {(utilizador.id_role == 3) &&
-
-                                    <span>Agente</span>
-
-                                }
-                                {(utilizador.id_role == 4) &&
-
-                                    <span>Utilizador</span>
-
-                                }
+                                {recompensa.descricao}
+                            </span>
+                        </td>
+                        <td className='text-center text-dark lh-sm'>
+                        <span className='position-relative' style={{ fontSize: "13px" }}>
+                                {recompensa.num_pontos} Pontos
                             </span>
                         </td>
                         <td className='text-center text-dark lh-sm'>
                             <span className='position-relative' style={{ fontSize: "11px" }}>
-                                {(utilizador.estado == 1) &&
+                                {(recompensa.disponivel == 1) &&
                                     <button
                                     className='btn-estado fw-semibold border-0' style={{width : '70px', borderRadius: '100px'}}
-                                         onClick={() => { Estado(utilizador.id) }}>
+                                         onClick={() => { Estado(recompensa.id) }}>
 
                                         Ativa
 
                                     </button>
                                 }
-                                {(utilizador.estado == 0) &&
+                                {(recompensa.disponivel == 0) &&
                                     <button
                                     className='btn-estado fw-semibold border-0' style={{width : '70px', borderRadius: '100px', backgroundColor:'red'}}
-                                         onClick={() => { Estado(utilizador.id) }}>
+                                         onClick={() => { Estado(recompensa.id) }}>
 
                                         Desativa
 
@@ -169,32 +150,26 @@ export default function UtilizadoresComponent() {
 
                         </td>
                         <td className='text-center text-dark lh-sm'>
-                            <span className='position-relative' style={{ fontSize: "11px" }}>
-                                {utilizador.pontos}
-                            </span>
-                        </td>
-                        <td className='text-center text-dark lh-sm'>
-                            <span className='position-relative' style={{ fontSize: "11px" }}>
-                                {utilizador.data_nascimento}
-                            </span>
-                        </td>
-                        <td className='text-start text-dark lh-sm'>
-                            <span className='fs-5 fw-semibold  position-relative'>
-                                <img className="photo" width={"85%"} height={"85%"} src={utilizador.fotografia} />
+                        <span className='position-relative' style={{ fontSize: "13px" }}>
+                                {recompensa.validade} Dias
                             </span>
                         </td>
                         <td >
-                            <Link to={'/backend/editarutilizador/' + utilizador.id}>
+                            <Link to={'/backend/editarregiao/' + recompensa.id}>
                             
                             <i class="bi bi-pencil-fill"></i></Link>
                         </td>
-                        
+
+
+                       
+
 
                     </tr>
                 )
             })
         )
     }
+    
     return (
 
         <div className="col overflow-auto h-sm-100 px-5 pt-4" style={{ backgroundColor: "#46483C" }}>
@@ -202,7 +177,7 @@ export default function UtilizadoresComponent() {
             <div className="mb-3 row">
                 <div className='col-6'>
                     <span className='h2 fw-bold' style={{ color: "#D3D4A9" }}>
-                        Utilizadores
+                        Recompensas
                     </span>
                     <br />
                 </div>
@@ -210,7 +185,7 @@ export default function UtilizadoresComponent() {
 
             </div>
             <br />
-           
+
             <div className="mb-3 row">
                 <div className='col d-flex justify-content-start align-items-center fs-6 fw-normal'>
                     <span className='me-2' style={{ color: "#D3D4A9" }}>
@@ -223,44 +198,39 @@ export default function UtilizadoresComponent() {
                             Data de criação
                         </button>
                         <ul className="dropdown-menu" aria-labelledby="dropdown-filtro">
-                            <li><button className="dropdown-item" onClick={e => { handleFiltro('nome', 'ASC', e.target.textContent) }} type='button'>Nome de utilizador (A-Z)</button></li>
-                            <li><button className="dropdown-item" onClick={e => { handleFiltro('nome', 'DESC', e.target.textContent) }} type='button'>Nome de utilizador (Z-A)</button></li>
-                            <li><button className="dropdown-item" onClick={e => { handleFiltro('id_role', 'ASC', e.target.textContent) }} type='button'>Role</button></li>
-                            <li><button className="dropdown-item" onClick={e => { handleFiltro('estado', 'DESC', e.target.textContent) }} type='button'>Estado</button></li>
+                            <li><button className="dropdown-item" onClick={e => { handleFiltro('regiao', 'ASC', e.target.textContent) }} type='button'>Nome da região (A-Z)</button></li>
+                            <li><button className="dropdown-item" onClick={e => { handleFiltro('regiao', 'DESC', e.target.textContent) }} type='button'>Nome de região (Z-A)</button></li>
+                            <li><button className="dropdown-item" onClick={e => { handleFiltro('num_pontos', 'ASC', e.target.textContent) }} type='button'>Pontos</button></li>
+
                         </ul>
                     </div>
 
                 </div>
-                <Link to='/backend/addutilizador' className='btn-login fw-semibold border-0' style={{width : '200px' }}>
-                
-                Novo Utilizador
-            </Link>
+                <Link to='/backend/addrecompensa' className='btn-login fw-semibold border-0' style={{ width: '250px' }}>
+
+                    Nova Recompensa
+                </Link>
             </div>
-        
+
             <div className="mb-3 row px-2">
                 <div className='col p-3 rounded-4 border shadow' style={{ backgroundColor: "#E9F3DE" }}>
                     <table className='table' style={{ backgroundColor: "#E9F3DE" }}>
                         <thead>
                             <tr className=''>
-                                <th className='text-start' style={{ width: '20%', fontSize: "14px" }}>Nome</th>
-                                <th className='text-start' style={{ width: '20%', fontSize: "14px"  }}>Email</th>
-                                <th className='text-center' style={{ width: '10%', fontSize: "14px"  }}>Role</th>
-                                <th className='text-center' style={{ width: '10%', fontSize: "14px"  }}>Estado</th>
-                                <th className='text-center' style={{ width: '10%', fontSize: "14px"  }}>Pontos</th>
-                                <th className='text-center' style={{ width: '10%', fontSize: "13px"  }}>Data de Nascimento</th>
-                                <th className='text-center' style={{ width: '10%', fontSize: "13px"  }}>Fotografia</th>
-                                <th className='text-center' style={{ width: '20%' }}></th>
+                                <th className='text-start' style={{ width: '20%', fontSize: "14px" }}>Recompensa</th>
+                                <th className='text-center' style={{ width: '40%', fontSize: "14px" }}>Descrição</th>
+                                <th className='text-center' style={{ width: '10%', fontSize: "14px" }}>Pontos</th>
+                                <th className='text-start' style={{ width: '15%', fontSize: "14px" }}>Disponibilidade</th>
+                                <th className='text-center' style={{ width: '10%', fontSize: "14px" }}>Validade</th>
+                                <th className='text-center' style={{ width: '50%' }}></th>
                             </tr>
                         </thead>
                         <tbody>
-                            <LoadUtilizadores />
+                            <LoadRegioes />
                         </tbody>
                     </table>
                 </div>
             </div>
-
-
-
         </div>
     )
 

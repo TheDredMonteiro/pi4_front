@@ -4,16 +4,23 @@ import React, { useEffect, useState } from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
 import ip from '../../ip'
 import authHeader from '../auth-header';
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import authService from '../auth.service';
-
+import { useParams } from "react-router-dom";
 export default function RegioesComponent() {
     const [regioes, setRegioes] = useState([])
     const [filtroCliente, setFiltroCliente] = useState('id')
     const [ordemCliente, setOrdemCliente] = useState('ASC')
-
+    const [userrole, setUserrole] = useState('')
+    const navigate = useNavigate()
+    const { role } = useParams();
     useEffect(() => {
 
+        if((role != 2) && (role != 1))
+        {
+            authService.logout(); navigate('/');
+        }
+        
         axios.get('http://localhost:8000/regioes/list?ordem=' + ordemCliente + '&filtro=' + filtroCliente, authHeader())
             .then(res => {
                 if (res.data.success) {
@@ -71,7 +78,7 @@ export default function RegioesComponent() {
                             </span>
                         </td>
                         <td >
-                            <Link to=''>
+                            <Link to={'/backend/editarregiao/' + regiao.id}>
                             
                             <i class="bi bi-pencil-fill"></i></Link>
                         </td>
@@ -122,7 +129,7 @@ export default function RegioesComponent() {
                     </div>
 
                 </div>
-                <Link to='' className='btn-login fw-semibold border-0' style={{ width: '250px' }}>
+                <Link to='/backend/addregiao' className='btn-login fw-semibold border-0' style={{ width: '250px' }}>
 
                     Nova Região
                 </Link>
