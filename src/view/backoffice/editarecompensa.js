@@ -8,7 +8,7 @@ import { Link } from "react-router-dom"
 import authService from '../auth.service';
 import { useParams } from "react-router-dom";
 
-export default function AddRegiaoComponent() {
+export default function EditarRecompensaComponent() {
     const [campRecompensa, setcampRecompensa] = useState("");
     const [campDescricao, setcampDescricao] = useState("");
     const [campFotografia, setcampFotografia] = useState("");
@@ -18,7 +18,29 @@ export default function AddRegiaoComponent() {
     const [filtroUtilizador, setFiltroUtilizador] = useState('id')
     const [ordemUtilizador, setOrdemUtilizador] = useState('ASC')
     const [Utilizadores, setUtilizadores] = useState([])
+    const [Utilizador, setUtilizador] = useState([])
+    const [Recompensa, setRecompensa] = useState([])
+    const { id } = useParams();
     useEffect(() => {
+        axios.get('http://localhost:8000/recompensas/recompensa?id=' + id, authHeader())
+            .then(res => {
+                if (res.data.success) {
+                    const data = res.data.data;
+                    setRecompensa(data);
+                    setUtilizador(data.utilizadore);
+                    setcampDescricao(Recompensa.descricao);
+                        setcampPontos(Recompensa.num_pontos);
+                        setcampRecompensa(Recompensa.recompensa);
+                        setcampValidade(Recompensa.validade);
+                    campIdUtilizador(Recompensa.id_utilizador);
+                    campFotografia(Recompensa.fotografia);
+                } else {
+                    alert("Error Web Service!");
+                }
+            })
+            .catch(error => {
+                alert(error)
+            });
         axios.get('http://localhost:8000/user/listrespo?ordem=' + ordemUtilizador + '&filtro=' + filtroUtilizador, authHeader())
         .then(res => {
             if (res.data.success) {
@@ -50,7 +72,7 @@ function LoadUtilizadores() {
 
 
 
-    function Add() {
+    function Update(id) {
         if((campRecompensa == "") || (campDescricao == "") || (campFotografia == "") || (campIdUtilizador == "") || (campPontos == "") || (campValidade == ""))
         {
             alert("Preenche todos os campos.");
@@ -60,22 +82,29 @@ function LoadUtilizadores() {
             const body = {
                 recompensa: campRecompensa,
                 descricao: campDescricao,
+                id: id,
                 fotografia: campFotografia,
                 num_pontos: parseInt(campPontos),
                 id_utilizador: parseInt(campIdUtilizador),
                 validade: parseInt(campValidade)
             }
-
+            alert("id" + id);
+            alert(body.recompensa);
+            alert(body.id_utilizador);
+            alert(campDescricao);
+            alert(campPontos);
+            alert(campValidade);
             axios
-                .post('http://localhost:8000/recompensas/add', body, authHeader())
+                .put('http://localhost:8000/recompensas/update', body, authHeader())
                 .then(res => {
                     if (res.data.success) {
     
-                        alert("Recompensa Criada!");
+                        alert("Recompensa Editada!");
                         setcampDescricao("");
                         setcampPontos("");
                         setcampRecompensa("");
                         setcampValidade("");
+                        window.location.reload(false);
     
                     }
                     else {
@@ -94,7 +123,7 @@ function LoadUtilizadores() {
                 <div className='col-6'>
 
                     <span className='h5 fw-semibold' style={{ color: "#D3D4A9" }}>
-                        Criar Recompensa
+                        Editar Recompensa
                     </span>
                     <br />
                     <br />
@@ -104,6 +133,7 @@ function LoadUtilizadores() {
                     <input
                         className='form-control focus-warning text-dark w-50 rounded-3'
                         type='text'
+                        placeholder={Recompensa.recompensa}
                         autoComplete='none'
                         autoCapitalize='words'
                         required
@@ -131,6 +161,7 @@ function LoadUtilizadores() {
                         // id='user-username-input'
                         className='form-control focus-warning text-dark w-100 rounded-3'
                         type='text'
+                        placeholder={Recompensa.descricao}
                         autoComplete='none'
                         autoCapitalize='words'
                         required
@@ -157,6 +188,7 @@ function LoadUtilizadores() {
                         // id='user-username-input'
                         className='form-control focus-warning text-dark w-100 rounded-3'
                         type='text'
+                        placeholder={Recompensa.num_pontos}
                         autoComplete='none'
                         autoCapitalize='words'
                         required
@@ -183,6 +215,7 @@ function LoadUtilizadores() {
                         // id='user-username-input'
                         className='form-control focus-warning text-dark w-100 rounded-3'
                         type='text'
+                        placeholder={Recompensa.validade}
                         autoComplete='none'
                         autoCapitalize='words'
                         required
@@ -207,7 +240,7 @@ function LoadUtilizadores() {
                     </span>
                     <br />
                     <button className=" btn btn-sm bg-white dropdown-toggle" type="button" id="dropdown-roles" data-bs-toggle="dropdown" aria-expanded="false">
-                        
+                    {Utilizador.nome}
                     </button>
                     <ul className="dropdown-menu" aria-labelledby="dropdown-filtro">
                     <LoadUtilizadores/>
@@ -217,7 +250,7 @@ function LoadUtilizadores() {
                     <br></br>
                     <br></br>
                     <br></br>
-                    <button className='btn btn-success w-20 fw-semibold' onClick={() => { Add(); }}>Criar</button>
+                    <button className='btn btn-success w-20 fw-semibold' onClick={() => { Update(id); }}>Editar</button>
                     </div>
                 <div className='col-6'>
                 <br />
@@ -230,6 +263,7 @@ function LoadUtilizadores() {
                         className='form-control focus-warning text-dark w-100 rounded-3'
                         type='text'
                         autoComplete='none'
+                        placeholder={Recompensa.fotografia}
                         autoCapitalize='words'
                         required
                         value={campFotografia}
@@ -248,7 +282,7 @@ function LoadUtilizadores() {
                         }}
                     />
                     <br></br>
-                    <img className="photo" width={"25%"} height={"25%"} src={campFotografia} />
+                    <img className="photo" width={"25%"} height={"25%"} src={campFotografia} placeholder={Recompensa.fotografia} />
                 </div>
                 
             </div>

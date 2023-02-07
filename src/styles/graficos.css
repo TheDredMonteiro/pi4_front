@@ -1,0 +1,102 @@
+
+
+.cardU {
+    margin-top: 1%;
+    display: inline-block;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 10px 11px rgba(0, 0, 0, 0.15);
+    background-color: #E9F3DE;
+    width: 70%;
+    text-align: center;
+    width: 900px;
+    height: 450px; 
+}
+
+.cardV {
+    margin-top: 2%;
+    display: inline-block;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 10px 11px rgba(0, 0, 0, 0.15);
+    background-color: #E9F3DE;
+    width: 70%;
+    text-align: center;
+    width: 900px;
+    height: 450px; 
+
+}
+
+.cardI {
+    display:inline-block;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 10px 11px rgba(0, 0, 0, 0.15);
+    background-color: #E9F3DE;
+
+    text-align: center;
+
+
+}
+
+.cardL{
+    margin-top: 4%;
+    margin-left: 15%;
+    display:inline-block;
+    border:none;
+    border-radius: 10px;
+    box-shadow: 0px 10px 11px rgba(0, 0, 0, 0.15);
+    background-color: #E9F3DE;
+    width: 70%;
+    text-align: center;
+    width: 450px;
+    height: 450px
+}
+
+.containerL{
+    width: 400px;
+    height: 400px ;
+}
+
+.Cvouch{
+    position: absolute;
+    width: 882px;
+    height: 400px ;
+    left: 399px;
+    top: 590px;
+      
+}
+
+.Cidade{
+    position:absolute;
+    width: 482px;
+    height: 448px;
+    left: 1366px;
+    top: 121px;
+}   
+
+.Cutil{
+    position: absolute;
+    width: 882px;
+    height: 448px;
+    left: 400px;
+    top: 121px;
+
+}
+
+.Clocal{
+    position: absolute;
+    width: 482px;
+    height:400px;
+    left:1366px;
+    top:590px;
+}
+
+.container{
+    margin-top: 1%;
+    height:380px;
+}
+
+.containerV{
+    height:380px;
+}

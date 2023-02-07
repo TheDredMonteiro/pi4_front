@@ -7,40 +7,26 @@ import PrivateRoute from './view/backoffice/private_route'
 import Utilizadores from './view/backoffice/utilizadores'
 import PontosInteresse from './view/backoffice/pontosinteresse'
 import Recompensas from './view/backoffice/recompensas'
-
+import Reservas from './view/backoffice/reservas'
+import Visitas from './view/backoffice/visitas'
 import Regioes from './view/backoffice/regioes'
 import PontoInteresse from './view/backoffice/pontointeresse'
 import EditarUtilizador from './view/backoffice/editarutilizador'
 import EditarRegiao from './view/backoffice/editarregiao'
+import EditarRecompensa from './view/backoffice/editarecompensa'
 import AddUtilizador from './view/backoffice/addutilizador'
 import AddRecompensa from './view/backoffice/addrecompensa'
 import AddRegiao from './view/backoffice/addregiao'
+import AddVisitas from './view/backoffice/addvisita'
 import Recuperar from './view/backoffice/recuperar'
 import Recuperar2 from './view/backoffice/recuperar2'
-
+import Dashboard from './view/dashboard/Dashboard';
 import NavDeLadob from './view/backoffice/navdeladobackend'
 import FrontPage from './view/landingpage/frontpage'
 import LandingPage from './view/landingpage/landingpage'
 import Login from './view/login/Login';
 import Login2 from './view/login/Login2';
-/*import BoLogin from './view/backoffice/login'
-import BoRegistar from './view/backoffice/registar'
-import BoRegistar2 from './view/backoffice/registar2'
-import BoFrontLivros from './view/backoffice/frontlivros'
-import BoMeusLivro from './view/backoffice/meuslivros'
-import BoMinhasCategorias from './view/backoffice/minhascategorias'
-import BoLivraria from './view/backoffice/livraria'
-import BoRecomendados from './view/backoffice/recomendados'
 
-
-import BoClientes from './view/backoffice/clientes'
-import BoLivros from './view/backoffice/livros'
-import BoAddLivro from './view/backoffice/addlivro'
-import BoAddCategoria from './view/backoffice/addcategoria'
-import BoAddCategoriaF from './view/backoffice/addcategoriaF'
-import BoLC from './view/backoffice/lc_cliente'
-import BoEstatisticas from './view/backoffice/estatisticas';
-*/
 import UsersModalComponent from './view/backoffice/users_modal'
 import CriarUserModalComponent from './view/backoffice/criar_user_modal'
 import EliminarUserModalComponent from './view/backoffice/eliminar_user_modal'
@@ -99,6 +85,13 @@ export default function App() {
 
 					</>
 				} />
+				<Route exact path='/backend/dashboard/:role' element={
+					<>
+
+						<BackOffice pagina={<Dashboard />} />
+
+					</>
+				} />
 				<Route exact path='/recuperar' element={
 					<>
 
@@ -133,11 +126,20 @@ export default function App() {
 				<Route path='/backend/pontointeresse/:id' element={
 					<BackOffice pagina={<PontoInteresse />} />
 				} />
+				<Route path='/backend/reservas/:id' element={
+					<BackOffice pagina={<Reservas />} />
+				} />
+				<Route path='/backend/visitas/:id' element={
+					<BackOffice pagina={<Visitas />} />
+				} />
 				<Route path='/backend/editarutilizador/:id' element={
 					<BackOffice pagina={<EditarUtilizador />} />
 				} />
 				<Route path='/backend/editarregiao/:id' element={
 					<BackOffice pagina={<EditarRegiao />} />
+				} />
+				<Route path='/backend/editarrecompensa/:id' element={
+					<BackOffice pagina={<EditarRecompensa />} />
 				} />
 				<Route path='/backend/pontosinteresse/:role' element={
 					<BackOffice pagina={<PontosInteresse />} />
@@ -156,6 +158,9 @@ export default function App() {
 				} />
 				<Route path='/backend/addregiao' element={
 					<BackOffice pagina={<AddRegiao />} />
+				} />
+				<Route path='/backend/addvisitas/:id' element={
+					<BackOffice pagina={<AddVisitas />} />
 				} />
 				{/*
 				<Route path='/back-office/frontLivros/:mail/:pass' element={

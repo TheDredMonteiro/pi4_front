@@ -148,9 +148,19 @@ export default function PontosInteresseComponent() {
                         <td >
                             <Link to={'/backend/pontointeresse/' + ponto.id}>
 
-                                <i class="bi bi-book-fill fs-4" style={{ color: "#526600" }}></i></Link>
+                                <i class="bi bi-book fs-4" style={{ color: "#526600" }}></i></Link>
                         </td>
-
+                        <td >
+                            <Link to={'/backend/visitas/' + ponto.id}>
+                            
+                            <i class="bi bi-calendar2-check-fill fs-4" style={{ color:"green"}}></i></Link>
+                        </td>
+                        <td >
+                            <Link className='btn btn-success ' style={{ fontSize: "13px" }} to={'/backend/addvisitas/' + ponto.id}>
+                            
+                            Adicionar Visita</Link>
+                        </td>
+                        
 
                     </tr>
                 )

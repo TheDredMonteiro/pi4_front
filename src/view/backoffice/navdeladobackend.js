@@ -43,7 +43,7 @@ export default function Nav_Lado_Backend_Component(props) {
 
                     <li className='mb-2'>
                         {(userrole == 1) &&
-                            <Link to={'/backend/regioes/'+1}
+                            <Link to={'/backend/dashboard/'+1}
                                 className='btn btn-outline-secondary border-0 rounded-0 px-2 px-sm-0  d-flex'
                                 onFocus={e => setTimeout(() => { e.target.blur() }, 200)}>
                                 &nbsp;&nbsp;&nbsp;<i class="fs-5 bi bi-bar-chart-fill" style={{ color: "#46483C" }}></i> &nbsp;<span className=' d-none d-sm-inline fw-semibold' style={{ color: "#46483C", fontSize: "20px" }}>Dashboard</span>
@@ -110,14 +110,14 @@ export default function Nav_Lado_Backend_Component(props) {
                             <Link to={'/backend/recompensas/'+1}
                             className='btn btn-outline-secondary border-0 rounded-0 px-2 px-sm-0  d-flex'
                             onFocus={e => setTimeout(() => { e.target.blur() }, 200)}>
-                            &nbsp;&nbsp;&nbsp;<i class="fs-5 bi bi-trophy-fill" style={{ color: "#46483C" }}></i> &nbsp;<span className=' d-none d-sm-inline fw-bold' style={{ color: "#46483C", fontSize: "20px" }}>Recompensas</span>
+                            &nbsp;&nbsp;&nbsp;<i class="fs-5 bi bi-trophy-fill" style={{ color: "#46483C" }}></i> &nbsp;<span className=' d-none d-sm-inline fw-semibold' style={{ color: "#46483C", fontSize: "20px" }}>Recompensas</span>
                         </Link>
                         }
                          {(userrole == 2) &&
                             <Link to={'/backend/recompensas/'+2}
                             className='btn btn-outline-secondary border-0 rounded-0 px-2 px-sm-0  d-flex'
                             onFocus={e => setTimeout(() => { e.target.blur() }, 200)}>
-                            &nbsp;&nbsp;&nbsp;<i class="fs-5 bi bi-trophy-fill" style={{ color: "#46483C" }}></i> &nbsp;<span className=' d-none d-sm-inline fw-bold' style={{ color: "#46483C", fontSize: "20px" }}>Recompensas</span>
+                            &nbsp;&nbsp;&nbsp;<i class="fs-5 bi bi-trophy-fill" style={{ color: "#46483C" }}></i> &nbsp;<span className=' d-none d-sm-inline fw-semibold' style={{ color: "#46483C", fontSize: "20px" }}>Recompensas</span>
                         </Link>
                         }
                         
@@ -127,7 +127,7 @@ export default function Nav_Lado_Backend_Component(props) {
                              <Link to={'/backend/regioes/'+1}
                              className='btn btn-outline-secondary border-0 rounded-0 px-2 px-sm-0  d-flex'
                              onFocus={e => setTimeout(() => { e.target.blur() }, 200)}>
-                             &nbsp;&nbsp;&nbsp;<i class="fs-5 bi bi-sticky-fill" style={{ color: "#46483C" }}></i> &nbsp;<span className=' d-none d-sm-inline fw-bold' style={{ color: "#46483C", fontSize: "20px" }}>Página Web</span>
+                             &nbsp;&nbsp;&nbsp;<i class="fs-5 bi bi-sticky-fill" style={{ color: "#46483C" }}></i> &nbsp;<span className=' d-none d-sm-inline fw-semibold' style={{ color: "#46483C", fontSize: "20px" }}>Página Web</span>
                          </Link>
                         }
                     </li>

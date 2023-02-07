@@ -26,7 +26,6 @@ export default function RecompensasComponent() {
                 if (res.data.success) {
                     const data = res.data.data;
                     setRecompensas(data);
-
                 } else {
                     alert("Error Web Service!");
                 }
@@ -34,25 +33,12 @@ export default function RecompensasComponent() {
             .catch(error => {
                 alert(error)
             });
-            
-        
-
     }, [filtroCliente, ordemCliente])
-
-    /*useEffect(() => {
-
-        axios.get(ip + '/clientes/total', authHeader())
-            .then(res => {
-                setTotalClientes(res.data.data)
-            });
-    }, [])*/
     function handleFiltro(filtro, ordem, texto) {
         setFiltroCliente(filtro);
         setOrdemCliente(ordem);
         document.getElementById('dropdown-filtro').textContent = texto
     }
-    
-    
     function Estado(id) {
         const div1 = document.getElementById(id)
         const exampleAttr = div1.getAttribute('data-estado');
@@ -100,10 +86,7 @@ export default function RecompensasComponent() {
                 })
                 .catch(error => { alert(error); })
         }
-
     }
-
-
     function LoadRegioes() {
         return (
             recompensas.map(recompensa => {
@@ -122,7 +105,7 @@ export default function RecompensasComponent() {
                         </td>
                         <td className='text-center text-dark lh-sm'>
                         <span className='position-relative' style={{ fontSize: "13px" }}>
-                                {recompensa.num_pontos} Pontos
+                                {recompensa.num_pontos} Pontos {recompensa.quantidade}
                             </span>
                         </td>
                         <td className='text-center text-dark lh-sm'>
@@ -131,23 +114,17 @@ export default function RecompensasComponent() {
                                     <button
                                     className='btn-estado fw-semibold border-0' style={{width : '70px', borderRadius: '100px'}}
                                          onClick={() => { Estado(recompensa.id) }}>
-
                                         Ativa
-
                                     </button>
                                 }
                                 {(recompensa.disponivel == 0) &&
                                     <button
                                     className='btn-estado fw-semibold border-0' style={{width : '70px', borderRadius: '100px', backgroundColor:'red'}}
                                          onClick={() => { Estado(recompensa.id) }}>
-
                                         Desativa
-
                                     </button>
                                 }
                             </span>
-
-
                         </td>
                         <td className='text-center text-dark lh-sm'>
                         <span className='position-relative' style={{ fontSize: "13px" }}>
@@ -155,15 +132,9 @@ export default function RecompensasComponent() {
                             </span>
                         </td>
                         <td >
-                            <Link to={'/backend/editarregiao/' + recompensa.id}>
-                            
+                            <Link to={'/backend/editarrecompensa/' + recompensa.id}>
                             <i class="bi bi-pencil-fill"></i></Link>
                         </td>
-
-
-                       
-
-
                     </tr>
                 )
             })
@@ -181,17 +152,13 @@ export default function RecompensasComponent() {
                     </span>
                     <br />
                 </div>
-
-
             </div>
             <br />
-
             <div className="mb-3 row">
                 <div className='col d-flex justify-content-start align-items-center fs-6 fw-normal'>
                     <span className='me-2' style={{ color: "#D3D4A9" }}>
                         Ver na ordem de
                     </span>
-
                     <div className="dropdown bg-white rounded me-2">
                         <button className=" btn btn-sm btn-outline-dark dropdown-toggle" type="button" id="dropdown-filtro" data-bs-toggle="dropdown" aria-expanded="false">
                             <span className='me-2'></span>
@@ -201,17 +168,13 @@ export default function RecompensasComponent() {
                             <li><button className="dropdown-item" onClick={e => { handleFiltro('regiao', 'ASC', e.target.textContent) }} type='button'>Nome da região (A-Z)</button></li>
                             <li><button className="dropdown-item" onClick={e => { handleFiltro('regiao', 'DESC', e.target.textContent) }} type='button'>Nome de região (Z-A)</button></li>
                             <li><button className="dropdown-item" onClick={e => { handleFiltro('num_pontos', 'ASC', e.target.textContent) }} type='button'>Pontos</button></li>
-
                         </ul>
                     </div>
-
                 </div>
                 <Link to='/backend/addrecompensa' className='btn-login fw-semibold border-0' style={{ width: '250px' }}>
-
                     Nova Recompensa
                 </Link>
             </div>
-
             <div className="mb-3 row px-2">
                 <div className='col p-3 rounded-4 border shadow' style={{ backgroundColor: "#E9F3DE" }}>
                     <table className='table' style={{ backgroundColor: "#E9F3DE" }}>
@@ -233,5 +196,4 @@ export default function RecompensasComponent() {
             </div>
         </div>
     )
-
 }

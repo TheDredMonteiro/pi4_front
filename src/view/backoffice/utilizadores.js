@@ -188,6 +188,11 @@ export default function UtilizadoresComponent() {
                             
                             <i class="bi bi-pencil-fill"></i></Link>
                         </td>
+                        <td >
+                            <Link to={'/backend/reservas/' + utilizador.id}>
+                            
+                            <i class="bi bi-calendar2-check-fill" style={{ color:"green"}}></i></Link>
+                        </td>
                         
 
                     </tr>
